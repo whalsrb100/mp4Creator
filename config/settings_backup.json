@@ -1,0 +1,51 @@
+{
+  "app_title": "my MP4 Creator",
+  "default_theme": "dark",
+  "giphy_settings": {
+    "search_limit": 4,
+    "giphy_api_key": "O8Ga8tJHAOCwbzMLc7UrMHBEBEPkclXr"
+  },
+  "voice_settings": {
+    "default_speed": "+40%",
+    "default_voice": "남자1"
+  },
+  "google_settings": {
+    "service_account_key_path": "config/google-sa-api-key.json",
+    "image_directory_id": "1p4Fho0QyuMmDy2Cy4RVljLkxlJt6Gk11",
+    "script_spreadsheet_id": "1A3Eqd4z5pEIxpAJYYug5XVpzj51jV0o66TLQTPsGkTQ",
+    "image_spreadsheet_id": "1OB57MsD4-WhPhyWKa0kvUvlHmErUS9BjqpTPPaGrk_E",
+    "image_sheet_name": "이미지정보",
+    "script_sheet_name": "대본목록"
+  },
+  "speed_list": [
+    "-50%",
+    "-40%",
+    "-30%",
+    "-20%",
+    "-10%",
+    "0%",
+    "+10%",
+    "+20%",
+    "+30%",
+    "+40%",
+    "+50%"
+  ],
+  "themes_list": [
+    "red",
+    "green",
+    "blue",
+    "yellow",
+    "purple",
+    "orange",
+    "pink",
+    "brown",
+    "gray",
+    "dark",
+    "light"
+  ],
+  "voices_list": {
+    "남자1": "ko-KR-HyunsuMultilingualNeural",
+    "남자2": "ko-KR-InJoonNeural",
+    "여자1": "ko-KR-SunHiNeural"
+  }
+}

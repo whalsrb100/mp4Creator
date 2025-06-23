@@ -1,0 +1,16 @@
+fastapi
+uvicorn
+google-api-python-client
+google-auth
+google-auth-httplib2
+google-auth-oauthlib
+gspread
+giphy_client
+python-multipart
+aiofiles
+pydub
+gtts
+moviepy
+python-dotenv
+requests
+jinja2
