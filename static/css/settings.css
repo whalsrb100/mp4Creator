@@ -1,0 +1,10 @@
+/* settings 페이지 전용 CSS */
+form {
+    margin-top: 24px;
+}
+label {
+    font-size: 1.1em;
+}
+button {
+    margin-top: 12px;
+}
