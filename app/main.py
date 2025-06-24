@@ -1,4 +1,4 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, Request
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from app.routes import settings as settings_route
@@ -17,5 +17,5 @@ templates = Jinja2Templates(directory="templates")
 app.include_router(settings_route.router)
 
 @app.get("/")
-def root():
-    return templates.TemplateResponse("base.html", {"request": None})
+def root(request: Request):
+    return templates.TemplateResponse("index.html", {"request": request})
