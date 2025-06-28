@@ -3,15 +3,86 @@
 {% block head %}
 <link rel="stylesheet" href="/static/css/settings.css">
 {% endblock %}
+{% block scripts %}
+<script src="/static/js/accordion.js"></script>
+{% endblock %}
 {% block content %}
 <h2>설정</h2>
 <form method="post">
-    <label>앱 타이틀: <input type="text" name="app_title" value="{{ settings.app_title }}" /></label><br>
-    <label>테마: <select name="theme">
-        {% for t in settings.themes_list %}
-            <option value="{{ t }}" {% if t == settings.theme %}selected{% endif %}>{{ t }}</option>
-        {% endfor %}
-    </select></label><br>
+    {% for key, value in settings.items() %}
+        {% if key == 'theme' and settings.themes_list %}
+            <div class="theme-dropdown">
+                <div class="theme-dropdown-selected">{{ value }}</div>
+                <div class="theme-dropdown-list">
+                    {% for t in settings.themes_list %}
+                        <div class="theme-dropdown-item{% if t == value %} selected{% endif %}" data-value="{{ t }}">{{ t }}</div>
+                    {% endfor %}
+                </div>
+                <input type="hidden" name="theme" value="{{ value }}">
+            </div><br>
+        {% elif key == 'default_theme' and settings.themes_list %}
+            <div class="theme-dropdown">
+                <div class="theme-dropdown-selected">{{ value }}</div>
+                <div class="theme-dropdown-list">
+                    {% for t in settings.themes_list %}
+                        <div class="theme-dropdown-item{% if t == value %} selected{% endif %}" data-value="{{ t }}">{{ t }}</div>
+                    {% endfor %}
+                </div>
+                <input type="hidden" name="default_theme" value="{{ value }}">
+            </div><br>
+        {% elif key == 'voice_settings' and value is mapping %}
+            <div class="accordion-section">
+                <div class="accordion-header">{{ key }}</div>
+                <div class="accordion-content" style="display:none;">
+                    {% for k, v in value.items() %}
+                        {% if k == 'default_voice' and settings.voices_list %}
+                            <div class="theme-dropdown">
+                                <div class="theme-dropdown-selected">{{ v }}</div>
+                                <div class="theme-dropdown-list">
+                                    {% for voice in settings.voices_list.keys() %}
+                                        <div class="theme-dropdown-item{% if voice == v %} selected{% endif %}" data-value="{{ voice }}">{{ voice }}</div>
+                                    {% endfor %}
+                                </div>
+                                <input type="hidden" name="voice_settings.default_voice" value="{{ v }}">
+                            </div><br>
+                        {% elif k == 'default_speed' and settings.speed_list %}
+                            <div class="theme-dropdown">
+                                <div class="theme-dropdown-selected">{{ v }}</div>
+                                <div class="theme-dropdown-list">
+                                    {% for speed in settings.speed_list %}
+                                        <div class="theme-dropdown-item{% if speed == v %} selected{% endif %}" data-value="{{ speed }}">{{ speed }}</div>
+                                    {% endfor %}
+                                </div>
+                                <input type="hidden" name="voice_settings.default_speed" value="{{ v }}">
+                            </div><br>
+                        {% else %}
+                            <label>{{ k }}: <input type="text" name="voice_settings.{{ k }}" value="{{ v }}" /></label><br>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </div>
+        {% elif value is string or value is number %}
+            <label>{{ key }}: <input type="text" name="{{ key }}" value="{{ value }}" /></label><br>
+        {% elif value is mapping %}
+            <div class="accordion-section">
+                <div class="accordion-header">{{ key }}</div>
+                <div class="accordion-content" style="display:none;">
+                    {% for k, v in value.items() %}
+                        <label>{{ k }}: <input type="text" name="{{ key }}.{{ k }}" value="{{ v }}" /></label><br>
+                    {% endfor %}
+                </div>
+            </div>
+        {% elif value is sequence %}
+            <div class="accordion-section">
+                <div class="accordion-header">{{ key }}</div>
+                <div class="accordion-content" style="display:none;">
+                    {% for v in value %}
+                        <label>{{ key }}[{{ loop.index0 }}]: <input type="text" name="{{ key }}.{{ loop.index0 }}" value="{{ v }}" /></label><br>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endif %}
+    {% endfor %}
     <button type="submit">저장</button>
 </form>
 <a href="/">메인으로</a>

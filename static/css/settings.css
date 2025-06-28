@@ -8,3 +8,70 @@ label {
 button {
     margin-top: 12px;
 }
+
+/* 아코디언 스타일 */
+.accordion-section {
+    margin-bottom: 1em;
+    border: 1px solid #444;
+    border-radius: 6px;
+    background: #23272a;
+}
+.accordion-header {
+    padding: 10px 16px;
+    cursor: pointer;
+    font-weight: bold;
+    background: #282c34;
+    color: #ffb86c;
+    border-radius: 6px 6px 0 0;
+    transition: background 0.2s;
+}
+.accordion-header.active {
+    background: #44475a;
+}
+.accordion-content {
+    padding: 12px 16px;
+    background: #23272a;
+    border-radius: 0 0 6px 6px;
+}
+
+/* 커스텀 드롭다운(라디오) 스타일 */
+.theme-dropdown {
+    position: relative;
+    display: inline-block;
+    width: 220px;
+}
+.theme-dropdown-selected {
+    background: #181a1b;
+    color: #e8e6e3;
+    border: 1px solid #444;
+    border-radius: 4px;
+    padding: 8px 12px;
+    cursor: pointer;
+    user-select: none;
+}
+.theme-dropdown-list {
+    display: none;
+    position: absolute;
+    background: #23272a;
+    border: 1px solid #444;
+    border-radius: 0 0 6px 6px;
+    width: 100%;
+    z-index: 10;
+    max-height: 180px;
+    overflow-y: auto;
+}
+.theme-dropdown-list.show {
+    display: block;
+}
+.theme-dropdown-item {
+    padding: 8px 12px;
+    cursor: pointer;
+    color: #e8e6e3;
+}
+.theme-dropdown-item.selected {
+    background: #44475a;
+    color: #ffb86c;
+}
+.theme-dropdown-item:hover {
+    background: #6272a4;
+}

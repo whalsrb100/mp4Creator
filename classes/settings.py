@@ -113,18 +113,18 @@ class Settings:
     @property
     def google_drive_settings(self) -> Dict[str, Any]:
         self._settings = self._load_settings()
-        return self._settings.get("google_drive_settings", {})
+        # 기존 google_drive_settings 대신 google_settings 사용
+        return self._settings.get("google_settings", {})
 
     @google_drive_settings.setter
     def google_drive_settings(self, value: Dict[str, Any]) -> None:
-        self._settings["google_drive_settings"] = value
+        self._settings["google_settings"] = value
         self._save_settings()
 
     @property
     def service_account_key_path(self) -> str:
         return self.google_drive_settings.get("service_account_key_path", "")
 
-    
     @service_account_key_path.setter
     def service_account_key_path(self, value: str) -> None:
         self.google_drive_settings["service_account_key_path"] = value
@@ -157,6 +157,26 @@ class Settings:
         self.google_drive_settings["image_spreadsheet_id"] = value
     
     @property
+    def image_spreadsheet_sheet_name(self) -> str:
+        return self.google_drive_settings.get("image_sheet_name", "Sheet1")
+
+    @image_spreadsheet_sheet_name.setter
+    def image_spreadsheet_sheet_name(self, value: str) -> None:
+        google_drive = self.google_drive_settings
+        google_drive["image_sheet_name"] = value
+        self.google_drive_settings = google_drive
+
+    @property
+    def script_spreadsheet_sheet_name(self) -> str:
+        return self.google_drive_settings.get("script_sheet_name", "Sheet1")
+
+    @script_spreadsheet_sheet_name.setter
+    def script_spreadsheet_sheet_name(self, value: str) -> None:
+        google_drive = self.google_drive_settings
+        google_drive["script_sheet_name"] = value
+        self.google_drive_settings = google_drive
+
+    @property
     def themes_list(self) -> list:
         self._settings = self._load_settings()
         return self._settings.get("themes_list", ["dark", "light"])
@@ -173,23 +193,3 @@ class Settings:
     @speed_list.setter
     def speed_list(self, value: list) -> None:
         self._settings["speed_list"] = value
-
-    @property
-    def image_spreadsheet_sheet_name(self) -> str:
-        return self.google_drive_settings.get("image_spreadsheet_sheet_name", "Sheet1")
-
-    @image_spreadsheet_sheet_name.setter
-    def image_spreadsheet_sheet_name(self, value: str) -> None:
-        google_drive = self.google_drive_settings
-        google_drive["image_spreadsheet_sheet_name"] = value
-        self.google_drive_settings = google_drive
-
-    @property
-    def script_spreadsheet_sheet_name(self) -> str:
-        return self.google_drive_settings.get("script_spreadsheet_sheet_name", "Sheet1")
-
-    @script_spreadsheet_sheet_name.setter
-    def script_spreadsheet_sheet_name(self, value: str) -> None:
-        google_drive = self.google_drive_settings
-        google_drive["script_spreadsheet_sheet_name"] = value
-        self.google_drive_settings = google_drive
