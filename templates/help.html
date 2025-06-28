@@ -1,0 +1,169 @@
+{% extends "base.html" %}
+{% block title %}도움말 - MP4 Creator{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="/static/css/help.css">
+{% endblock %}
+{% block content %}
+<h1>📚 MP4 Creator 도움말</h1>
+
+<div class="help-section">
+    <h2>🎯 앱 소개</h2>
+    <p>MP4 Creator는 텍스트를 자동으로 음성과 이미지가 포함된 MP4 동영상으로 변환해주는 도구입니다.</p>
+</div>
+
+<div class="help-section">
+    <h2>🚀 주요 기능</h2>
+    <div class="feature-grid">
+        <div class="feature-card">
+            <h3>🎤 음성 변환 (TTS)</h3>
+            <p>텍스트를 자연스러운 한국어 음성으로 변환</p>
+            <ul>
+                <li>3가지 음성 선택 (남자1, 남자2, 여자1)</li>
+                <li>속도 조절 (-50% ~ +50%)</li>
+                <li>특수 명령어 지원</li>
+            </ul>
+        </div>
+        
+        <div class="feature-card">
+            <h3>📊 구글 스프레드시트 연동</h3>
+            <p>대본을 스프레드시트에서 자동으로 읽어옴</p>
+            <ul>
+                <li>대본 목록 자동 읽기</li>
+                <li>이미지 정보 관리</li>
+                <li>실시간 동기화</li>
+            </ul>
+        </div>
+        
+        <div class="feature-card">
+            <h3>🖼️ 이미지 검색</h3>
+            <p>Giphy API를 통한 자동 이미지 검색</p>
+            <ul>
+                <li>키워드 기반 GIF 검색</li>
+                <li>고품질 이미지 선택</li>
+                <li>자동 다운로드</li>
+            </ul>
+        </div>
+        
+        <div class="feature-card">
+            <h3>🎬 MP4 생성</h3>
+            <p>음성과 이미지를 결합한 동영상 제작</p>
+            <ul>
+                <li>자막 타임라인 생성</li>
+                <li>고품질 동영상 출력</li>
+                <li>구글 드라이브 자동 업로드</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="help-section">
+    <h2>📝 사용 방법</h2>
+    <div class="steps">
+        <div class="step">
+            <span class="step-number">1</span>
+            <div class="step-content">
+                <h3>설정 구성</h3>
+                <p>설정 페이지에서 Google API 키, Giphy API 키, 음성 설정 등을 구성합니다.</p>
+            </div>
+        </div>
+        
+        <div class="step">
+            <span class="step-number">2</span>
+            <div class="step-content">
+                <h3>대본 작성</h3>
+                <p>Google 스프레드시트에 대본을 작성하거나 직접 텍스트를 입력합니다.</p>
+            </div>
+        </div>
+        
+        <div class="step">
+            <span class="step-number">3</span>
+            <div class="step-content">
+                <h3>MP4 생성</h3>
+                <p>앱에서 생성 버튼을 클릭하면 자동으로 음성, 이미지, 동영상이 생성됩니다.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="help-section">
+    <h2>🔧 특수 명령어</h2>
+    <div class="command-list">
+        <div class="command-item">
+            <code>[목소리:남자1]</code>
+            <span>음성을 남자1로 변경</span>
+        </div>
+        <div class="command-item">
+            <code>[속도:+20%]</code>
+            <span>말하기 속도를 20% 빠르게</span>
+        </div>
+        <div class="command-item">
+            <code>[쉼:2.0]</code>
+            <span>2초 쉼 추가</span>
+        </div>
+        <div class="command-item">
+            <code>[검색어:고양이]</code>
+            <span>고양이 이미지 검색</span>
+        </div>
+    </div>
+</div>
+
+<div class="help-section">
+    <h2>⚙️ 필수 설정 항목</h2>
+    <div class="settings-grid">
+        <div class="setting-item">
+            <h3>Google 설정</h3>
+            <ul>
+                <li>서비스 계정 키 파일 경로</li>
+                <li>이미지 디렉토리 ID</li>
+                <li>스프레드시트 ID들</li>
+            </ul>
+        </div>
+        
+        <div class="setting-item">
+            <h3>Giphy 설정</h3>
+            <ul>
+                <li>Giphy API 키</li>
+                <li>검색 결과 제한 수</li>
+            </ul>
+        </div>
+        
+        <div class="setting-item">
+            <h3>음성 설정</h3>
+            <ul>
+                <li>기본 음성 선택</li>
+                <li>기본 속도 설정</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<div class="help-section">
+    <h2>❓ 자주 묻는 질문</h2>
+    <div class="faq-list">
+        <details class="faq-item">
+            <summary>Google API 키는 어떻게 얻나요?</summary>
+            <p>Google Cloud Console에서 새 프로젝트를 만들고, Google Sheets API와 Google Drive API를 활성화한 후 서비스 계정을 생성하여 JSON 키 파일을 다운로드하세요.</p>
+        </details>
+        
+        <details class="faq-item">
+            <summary>Giphy API 키는 어디서 받나요?</summary>
+            <p>Giphy Developers 사이트(developers.giphy.com)에서 무료 계정을 만들고 API 키를 발급받을 수 있습니다.</p>
+        </details>
+        
+        <details class="faq-item">
+            <summary>생성된 MP4 파일은 어디에 저장되나요?</summary>
+            <p>설정에서 지정한 Google 드라이브 폴더에 자동으로 업로드됩니다.</p>
+        </details>
+        
+        <details class="faq-item">
+            <summary>음성 품질을 높이려면?</summary>
+            <p>속도를 적절히 조절하고, 문장 사이에 쉼표나 마침표를 적절히 사용하세요. 특수 명령어로 세밀한 조정도 가능합니다.</p>
+        </details>
+    </div>
+</div>
+
+<div class="help-navigation">
+    <a href="/" class="btn btn-primary">메인으로 돌아가기</a>
+    <a href="/settings" class="btn btn-secondary">설정 페이지</a>
+</div>
+{% endblock %}

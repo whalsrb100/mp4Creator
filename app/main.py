@@ -19,3 +19,7 @@ app.include_router(settings_route.router)
 @app.get("/")
 def root(request: Request):
     return templates.TemplateResponse("index.html", {"request": request})
+
+@app.get("/help")
+def help_page(request: Request):
+    return templates.TemplateResponse("help.html", {"request": request})
