@@ -1,9 +1,7 @@
 {
-	"folders": [
-		{
-			"name": "gwcmdExcel",
-			"path": "C:\\Users\\root\\mj\\vscode\\Projects\\mp4Creator"
-		}
-	],
-	"settings": {}
+    "folders": [
+        {
+            "path": "/root/apps/mp4Creator"
+        }
+    ]
 }
