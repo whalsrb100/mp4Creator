@@ -10,8 +10,11 @@ python-multipart
 aiofiles
 pydub
 gtts
-moviepy
+moviepy==1.0.3
 python-dotenv
 requests
 jinja2
 pyyaml
+edge-tts
+pillow
+httpx

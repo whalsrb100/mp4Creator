@@ -68,9 +68,28 @@ label {
     color: #fff;
 }
 
+.nav-link.primary {
+    background: #50fa7b;
+    color: #181a1b;
+    font-size: 1.1rem;
+    padding: 1.2rem 2rem;
+}
+
+.nav-link.primary:hover {
+    background: #5af78e;
+    color: #181a1b;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(80, 250, 123, 0.3);
+}
+
 @media (min-width: 600px) {
     .main-navigation {
         flex-direction: row;
         justify-content: center;
+    }
+    
+    .nav-link.primary {
+        order: -1;
+        margin-right: 1rem;
     }
 }

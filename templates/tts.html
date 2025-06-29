@@ -1,0 +1,141 @@
+{% extends "base.html" %}
+{% block title %}음성 생성 - MP4 Creator{% endblock %}
+{% block head %}
+<link rel="stylesheet" href="/static/css/tts.css">
+{% endblock %}
+{% block scripts %}
+<script src="/static/js/tts.js"></script>
+{% endblock %}
+{% block content %}
+<h1>🎤 음성 생성</h1>
+
+<div class="tts-container">
+    <!-- 텍스트 입력 섹션 -->
+    <div class="input-section">
+        <h2>📝 텍스트 입력</h2>
+        <form id="tts-form">
+            <div class="form-group">
+                <label for="text-input">변환할 텍스트:</label>
+                <textarea 
+                    id="text-input" 
+                    name="text" 
+                    rows="10" 
+                    placeholder="음성으로 변환할 텍스트를 입력하세요.
+
+특수 명령어 예시:
+[속도:+20%] 빠르게 말할 부분
+[속도:-10%] 천천히 말할 부분
+[쉼:2.0] 2초 쉼
+
+여러 줄의 텍스트를 입력할 수 있습니다."
+                    required
+                ></textarea>
+                <div class="text-stats">
+                    <span id="char-count">0</span> 글자 | 
+                    <span id="word-count">0</span> 단어 |
+                    예상 시간: <span id="estimated-time">0초</span>
+                </div>
+            </div>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label for="voice-select">목소리 선택:</label>
+                    <select id="voice-select" name="voice" required>
+                        {% for option in voice_options %}
+                        <option value="{{ option.value }}">{{ option.label }}</option>
+                        {% endfor %}
+                    </select>
+                </div>
+                
+                <div class="form-group">
+                    <label for="speed-input">속도 조절:</label>
+                    <div class="speed-control">
+                        <input 
+                            type="range" 
+                            id="speed-input" 
+                            name="speed" 
+                            min="-50" 
+                            max="100" 
+                            step="5" 
+                            value="0"
+                        >
+                        <span id="speed-value">+0%</span>
+                    </div>
+                </div>
+            </div>
+            
+            <button type="submit" class="generate-btn" id="generate-btn">
+                🎤 음성 생성하기
+            </button>
+        </form>
+    </div>
+
+    <!-- 진행 상황 표시 -->
+    <div class="progress-section" id="progress-section" style="display: none;">
+        <h2>📈 생성 진행 상황</h2>
+        <div class="progress-bar">
+            <div class="progress-fill" id="progress-fill"></div>
+        </div>
+        <div class="progress-text" id="progress-text">준비 중...</div>
+        <div class="progress-logs" id="progress-logs"></div>
+    </div>
+
+    <!-- 결과 섹션 -->
+    <div class="result-section" id="result-section" style="display: none;">
+        <h2>✅ 생성 완료!</h2>
+        
+        <div class="audio-preview">
+            <audio id="audio-player" controls style="width: 100%; margin-bottom: 20px; display: none;">
+                <source type="audio/mpeg">
+                브라우저가 오디오를 지원하지 않습니다.
+            </audio>
+        </div>
+
+        <div class="result-details">
+            <h3>파일 정보</h3>
+            <ul>
+                <li><strong>파일 크기:</strong> <span id="result-size"></span></li>
+                <li><strong>예상 재생 시간:</strong> <span id="result-duration"></span></li>
+                <li><strong>생성 시간:</strong> <span id="result-time"></span></li>
+                <li><strong>사용된 목소리:</strong> <span id="result-voice"></span></li>
+                <li><strong>속도:</strong> <span id="result-speed"></span></li>
+            </ul>
+        </div>
+
+        <div class="result-actions">
+            <h3>다음 작업</h3>
+            <button id="download-btn" class="result-btn download">⬇️ 다운로드</button>
+            <button id="upload-btn" class="result-btn upload">☁️ 드라이브 업로드</button>
+            <button id="new-btn" class="result-btn new">✨ 새로 만들기</button>
+        </div>
+    </div>
+
+    <!-- API 사용법 섹션 -->
+    <div class="api-section">
+        <h2>🔌 API 사용법</h2>
+        <div class="api-info">
+            <h3>POST /api/generate-audio</h3>
+            <p>음성 생성 API를 직접 호출할 수 있습니다.</p>
+            
+            <h4>요청 파라미터:</h4>
+            <pre><code>text: 변환할 텍스트 (필수)
+voice: 목소리 선택 (voice1, voice2, voice3 중 하나)
+speed: 속도 조절 (0.5 ~ 2.0, 기본값: 1.0)</code></pre>
+            
+            <h4>예시 (curl):</h4>
+            <pre><code>curl -X POST "http://localhost:8000/api/generate-audio" \
+  -F "text=안녕하세요. 테스트 음성입니다." \
+  -F "voice=voice1" \
+  -F "speed=1.0"</code></pre>
+            
+            <h4>응답 예시:</h4>
+            <pre><code>{
+  "success": true,
+  "message": "음성이 성공적으로 생성되었습니다.",
+  "file_size": "0.5 MB",
+  "download_url": "/download-audio?file=temp_audio.mp3"
+}</code></pre>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -10,3 +10,5 @@ __pycache__/
 .vscode/
 # Google Service Account Key (보안상 반드시 제외)
 config/google-sa-api-key.json
+# 생성된 출력 파일들
+outputs/

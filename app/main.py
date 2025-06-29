@@ -2,6 +2,7 @@ from fastapi import FastAPI, Request
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
 from app.routes import settings as settings_route
+from app.routes import tts as tts_route
 import os
 
 app = FastAPI()
@@ -15,6 +16,7 @@ templates = Jinja2Templates(directory="templates")
 
 # 라우터 등록
 app.include_router(settings_route.router)
+app.include_router(tts_route.router)
 
 @app.get("/")
 def root(request: Request):

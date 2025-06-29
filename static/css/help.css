@@ -122,6 +122,49 @@
     color: #e8e6e3;
 }
 
+/* 도움말 하위 섹션 */
+.help-subsection {
+    margin-top: 1.5rem;
+    padding: 1rem;
+    background: #181a1b;
+    border-radius: 6px;
+    border: 1px solid #444;
+}
+
+.help-subsection h3 {
+    margin-top: 0;
+    color: #ff79c6;
+    font-size: 1.1rem;
+}
+
+/* 규칙 목록 */
+.rule-list {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.rule-item {
+    padding: 0.5rem;
+    background: #2a2d34;
+    border-radius: 4px;
+    color: #e8e6e3;
+    border-left: 3px solid #50fa7b;
+}
+
+.rule-item strong {
+    color: #ff79c6;
+}
+
+.rule-item code {
+    background: #44475a;
+    color: #8be9fd;
+    padding: 0.15rem 0.3rem;
+    border-radius: 2px;
+    font-family: 'Courier New', monospace;
+    font-size: 0.9em;
+}
+
 /* 설정 그리드 */
 .settings-grid {
     display: grid;
