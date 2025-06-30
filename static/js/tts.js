@@ -176,50 +176,6 @@ document.addEventListener('DOMContentLoaded', function() {
                 document.body.removeChild(link);
             };
         }
-
-        // 업로드 버튼 설정
-        const uploadBtn = document.getElementById('upload-btn');
-        if (uploadBtn) {
-            uploadBtn.onclick = async () => {
-                uploadBtn.disabled = true;
-                uploadBtn.textContent = '☁️ 업로드 중...';
-                
-                try {
-                    const response = await fetch('/upload-to-drive', {
-                        method: 'POST',
-                        headers: {
-                            'Content-Type': 'application/json',
-                        },
-                        body: JSON.stringify({
-                            filename: 'generated_audio.mp3',
-                            local_path: result.file_path
-                        })
-                    });
-                    
-                    const uploadResult = await response.json();
-                    
-                    if (uploadResult.success) {
-                        alert('드라이브 업로드가 완료되었습니다!');
-                    } else {
-                        throw new Error(uploadResult.error || '업로드 실패');
-                    }
-                    
-                } catch (error) {
-                    alert(`업로드 실패: ${error.message}`);
-                }
-                
-                uploadBtn.disabled = false;
-                uploadBtn.textContent = '☁️ 드라이브 업로드';
-            };
-        }
-
-        // 새로 만들기 버튼
-        const newBtn = document.getElementById('new-btn');
-        if (newBtn) {
-            newBtn.onclick = () => {
-                location.reload();
-            };
-        }
     }
 
     // 초기화
