@@ -12,3 +12,4 @@ __pycache__/
 config/google-sa-api-key.json
 # 생성된 출력 파일들
 outputs/
+mp4Creator.code-workspace
