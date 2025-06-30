@@ -6,16 +6,17 @@
 
 /* 입력 섹션 */
 .input-section {
-    background: white;
+    background: #2d3748;
     border-radius: 8px;
     padding: 20px;
     margin-bottom: 20px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    border: 1px solid #4a5568;
 }
 
 .input-section h2 {
     margin-top: 0;
-    color: #333;
+    color: #e2e8f0;
 }
 
 .form-group {
@@ -32,7 +33,7 @@
     display: block;
     margin-bottom: 8px;
     font-weight: bold;
-    color: #333;
+    color: #e2e8f0;
 }
 
 #text-input {
@@ -42,39 +43,39 @@
     font-size: 14px;
     line-height: 1.5;
     padding: 12px;
-    border: 2px solid #ddd;
+    border: 2px solid #4a5568;
     border-radius: 6px;
     resize: vertical;
-    background: #f8f9fa;
-    color: #333;
+    background: #1a202c;
+    color: #e2e8f0;
 }
 
 #text-input:focus {
     outline: none;
-    border-color: #007bff;
-    box-shadow: 0 0 0 3px rgba(0, 123, 255, 0.1);
+    border-color: #4299e1;
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.2);
 }
 
 .text-stats {
     margin-top: 8px;
     font-size: 12px;
-    color: #6c757d;
+    color: #a0aec0;
     text-align: right;
 }
 
 #voice-select {
     width: 100%;
     padding: 10px;
-    border: 2px solid #ddd;
+    border: 2px solid #4a5568;
     border-radius: 6px;
-    background: white;
-    color: #333;
+    background: #1a202c;
+    color: #e2e8f0;
     font-size: 14px;
 }
 
 #voice-select:focus {
     outline: none;
-    border-color: #007bff;
+    border-color: #4299e1;
 }
 
 .speed-control {
@@ -86,17 +87,18 @@
 #speed-input {
     flex: 1;
     height: 6px;
-    background: #ddd;
+    background: #4a5568;
     border-radius: 3px;
     outline: none;
     -webkit-appearance: none;
+    appearance: none;
 }
 
 #speed-input::-webkit-slider-thumb {
     appearance: none;
     width: 20px;
     height: 20px;
-    background: #007bff;
+    background: #4299e1;
     border-radius: 50%;
     cursor: pointer;
 }
@@ -104,7 +106,7 @@
 #speed-input::-moz-range-thumb {
     width: 20px;
     height: 20px;
-    background: #007bff;
+    background: #4299e1;
     border-radius: 50%;
     cursor: pointer;
     border: none;
@@ -112,8 +114,8 @@
 
 #speed-value {
     font-weight: bold;
-    color: #007bff;
-    min-width: 40px;
+    color: #4299e1;
+    min-width: 50px;
 }
 
 .generate-btn {
@@ -144,22 +146,23 @@
 
 /* 진행 상황 섹션 */
 .progress-section {
-    background: white;
+    background: #2d3748;
     border-radius: 8px;
     padding: 20px;
     margin-bottom: 20px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    border: 1px solid #4a5568;
 }
 
 .progress-section h2 {
     margin-top: 0;
-    color: #333;
+    color: #e2e8f0;
 }
 
 .progress-bar {
     width: 100%;
     height: 20px;
-    background: #e9ecef;
+    background: #4a5568;
     border-radius: 10px;
     overflow: hidden;
     margin-bottom: 15px;
@@ -167,7 +170,7 @@
 
 .progress-fill {
     height: 100%;
-    background: linear-gradient(45deg, #007bff, #28a745);
+    background: linear-gradient(45deg, #4299e1, #48bb78);
     width: 0%;
     transition: width 0.3s ease;
     border-radius: 10px;
@@ -176,15 +179,15 @@
 .progress-text {
     text-align: center;
     font-weight: bold;
-    color: #333;
+    color: #e2e8f0;
     margin-bottom: 15px;
 }
 
 .progress-logs {
     max-height: 200px;
     overflow-y: auto;
-    background: #f8f9fa;
-    border: 1px solid #ddd;
+    background: #1a202c;
+    border: 1px solid #4a5568;
     border-radius: 4px;
     padding: 10px;
     font-family: 'Courier New', monospace;
@@ -194,29 +197,30 @@
 
 .log-entry {
     margin-bottom: 5px;
-    color: #333;
+    color: #a0aec0;
 }
 
 .log-entry.error {
-    color: #dc3545;
+    color: #fc8181;
 }
 
 .log-entry.success {
-    color: #28a745;
+    color: #68d391;
 }
 
 /* 결과 섹션 */
 .result-section {
-    background: white;
+    background: #2d3748;
     border-radius: 8px;
     padding: 20px;
     margin-bottom: 20px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    border: 1px solid #4a5568;
 }
 
 .result-section h2 {
     margin-top: 0;
-    color: #28a745;
+    color: #68d391;
 }
 
 .audio-preview {
@@ -225,7 +229,7 @@
 
 #audio-player {
     border-radius: 8px;
-    background: #f8f9fa;
+    background: #1a202c;
 }
 
 .result-details ul {
@@ -235,8 +239,8 @@
 
 .result-details li {
     padding: 8px 0;
-    border-bottom: 1px solid #eee;
-    color: #333;
+    border-bottom: 1px solid #4a5568;
+    color: #e2e8f0;
 }
 
 .result-details li:last-child {
@@ -248,7 +252,7 @@
 }
 
 .result-actions h3 {
-    color: #333;
+    color: #e2e8f0;
 }
 
 .result-btn {
@@ -263,67 +267,68 @@
 }
 
 .result-btn.download {
-    background: #007bff;
+    background: #4299e1;
     color: white;
 }
 
 .result-btn.download:hover {
-    background: #0056b3;
+    background: #3182ce;
 }
 
 .result-btn.upload {
-    background: #17a2b8;
+    background: #38b2ac;
     color: white;
 }
 
 .result-btn.upload:hover {
-    background: #138496;
+    background: #319795;
 }
 
 .result-btn.new {
-    background: #6c757d;
+    background: #718096;
     color: white;
 }
 
 .result-btn.new:hover {
-    background: #545b62;
+    background: #4a5568;
 }
 
 /* API 섹션 */
 .api-section {
-    background: white;
+    background: #2d3748;
     border-radius: 8px;
     padding: 20px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+    border: 1px solid #4a5568;
 }
 
 .api-section h2 {
     margin-top: 0;
-    color: #333;
+    color: #e2e8f0;
 }
 
 .api-info h3, .api-info h4 {
-    color: #495057;
+    color: #cbd5e0;
 }
 
 .api-info pre {
-    background: #f8f9fa;
-    border: 1px solid #ddd;
+    background: #1a202c;
+    border: 1px solid #4a5568;
     border-radius: 4px;
     padding: 15px;
     overflow-x: auto;
     font-family: 'Courier New', monospace;
     font-size: 13px;
     line-height: 1.4;
-    color: #333;
+    color: #e2e8f0;
 }
 
 .api-info code {
-    background: #f8f9fa;
+    background: #1a202c;
     padding: 2px 4px;
     border-radius: 3px;
     font-family: 'Courier New', monospace;
-    color: #e83e8c;
+    color: #f687b3;
 }
 
 /* 반응형 디자인 */
